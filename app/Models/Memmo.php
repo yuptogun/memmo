@@ -27,12 +27,20 @@ class Memmo extends Model
 
     public function getTitleAttribute(): string
     {
-        return explode("\n", $this->memo)[0];
+        $lines = $this->getMemoLines();
+        return array_shift($lines);
     }
 
     public function getContentAttribute(): string
     {
-        return preg_replace('/^' . $this->title . '\n+/', '', $this->memo);
+        $lines = $this->getMemoLines();
+        array_shift($lines);
+        return trim(implode("\n", $lines));
+    }
+
+    private function getMemoLines(): array
+    {
+        return explode("\n", $this->memo);
     }
 
     public function getTimestampAttribute(): string

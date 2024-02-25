@@ -13,7 +13,7 @@
             </div>
             <div class="mt-3" x-show="open" x-cloak>
                 <div class="prose">
-                    {!! nl2br($memmo->memo) !!}
+                    {!! nl2br($memmo->content) !!}
                 </div>
             </div>
         </div>
