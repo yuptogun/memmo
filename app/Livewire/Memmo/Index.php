@@ -15,7 +15,7 @@ class Index extends Component
         /** @var User $user */
         $user = Auth::user();
         return view('livewire.memmo.index', [
-            'memmos' => $user->memmos()->paginate(20)
+            'memmos' => $user->memmos()->latest()->paginate(20)
         ]);
     }
 }

@@ -15,13 +15,16 @@
 </head>
 
 <body class="font-sans antialiased">
-  <div class="container mx-auto max-w-xl drop-shadow-md">
+  <div class="container mx-auto max-w-xl">
       <livewire:layout.navigation />
 
-      <!-- Page Content -->
-      <main class="bg-paper p-4 sm:p-6 lg:p-8">
+      <main class="bg-paper p-6 drop-shadow-md">
         {{ $slot }}
       </main>
+
+      <div class="pt-8 pb-4 text-center text-gray-200 text-xs">
+        &copy; 2019~ by <a href="https://yuptogun.com" target="_blank" class="hover:border-b">yuptogun</a>
+      </div>
   </div>
 </body>
 
