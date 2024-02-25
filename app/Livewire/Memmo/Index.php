@@ -11,13 +11,19 @@ class Index extends Component
 {
     use WithPagination;
 
-    #[On('memmo-saved')]
     public function render()
     {
         /** @var User $user */
         $user = Auth::user();
         return view('livewire.memmo.index', [
-            'memmos' => $user->memmos()->latest()->paginate(20)
+            'memmos' => $user->memmos()->latest()->paginate(20),
         ]);
+    }
+
+    #[On('memmo-created')]
+    #[On('memmo-deleted')]
+    public function resetPagination()
+    {
+        $this->resetPage();
     }
 }

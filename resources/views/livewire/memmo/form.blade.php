@@ -9,6 +9,5 @@
     <button
         class="block w-full p-2 bg-binder text-white rounded disabled:bg-binder-300 font-bold"
         :disabled="memo === null || memo.trim().length === 0"
-        x-on:memmo-saved="$refresh"
         type="submit" disabled>MEMMO</button>
 </form>
