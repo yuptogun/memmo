@@ -33,6 +33,7 @@ class Form extends Component
             'memo' => $this->memo,
         ]);
         $this->dispatch('memmo-saved');
+        $this->memo = '';
     }
 
     public function render()
