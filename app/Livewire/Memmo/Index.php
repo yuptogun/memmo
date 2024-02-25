@@ -7,25 +7,23 @@ use Livewire\WithPagination;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Auth;
 
-use App\Models\Memmo;
-
 class Index extends Component
 {
     use WithPagination;
 
-    #[On('memmo-created')]
     public function render()
     {
         /** @var User $user */
         $user = Auth::user();
         return view('livewire.memmo.index', [
-            'memmos' => $user->memmos()->latest()->paginate(20)
+            'memmos' => $user->memmos()->latest()->paginate(20),
         ]);
     }
 
-    public function delete(int $id)
+    #[On('memmo-created')]
+    #[On('memmo-deleted')]
+    public function resetPagination()
     {
-        Memmo::findOrFail($id)->delete();
-        $this->dispatch('memmo-deleted');
+        $this->resetPage();
     }
 }

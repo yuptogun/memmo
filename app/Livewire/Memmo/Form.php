@@ -32,8 +32,8 @@ class Form extends Component
         $user->memmos()->create([
             'memo' => $this->memo,
         ]);
-        $this->dispatch('memmo-created');
         $this->memo = '';
+        $this->dispatch('memmo-created');
     }
 
     public function render()
