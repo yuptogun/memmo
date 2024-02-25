@@ -32,7 +32,7 @@ class Form extends Component
         $user->memmos()->create([
             'memo' => $this->memo,
         ]);
-        $this->dispatch('memmo-saved');
+        $this->dispatch('memmo-created');
         $this->memo = '';
     }
 

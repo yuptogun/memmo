@@ -13,7 +13,7 @@ class Index extends Component
 {
     use WithPagination;
 
-    #[On('memmo-saved', 'memmo-deleted')]
+    #[On('memmo-created')]
     public function render()
     {
         /** @var User $user */
