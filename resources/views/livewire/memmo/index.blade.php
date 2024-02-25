@@ -12,6 +12,12 @@
                 </button>
             </div>
             <div class="mt-3" x-show="open" x-cloak>
+                <div class="float-right">
+                    <button
+                        wire:confirm="cannot be undone! you sure?"
+                        wire:click="delete({{ $memmo->id }})"
+                        class="text-red-400 hover:text-red-600">delete</button>
+                </div>
                 <div class="prose">
                     {!! nl2br($memmo->content) !!}
                 </div>
