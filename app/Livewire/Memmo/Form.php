@@ -13,6 +13,16 @@ class Form extends Component
     #[Validate('required')]
     public string $memo = '';
 
+    public string $placeholder;
+
+    public function mount()
+    {
+        $this->placeholder = collect([
+            'hint: first line is the subject',
+            'hint: markdown to be supported soon',
+        ])->random();
+    }
+
     public function store()
     {
         $this->validate();
@@ -22,6 +32,7 @@ class Form extends Component
         $user->memmos()->create([
             'memo' => $this->memo,
         ]);
+        $this->dispatch('memmo-saved');
     }
 
     public function render()
