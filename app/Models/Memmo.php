@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Models\Traits\AttributeSavedAt;
+
 /**
  * @property string $memo
  * @property null|Carbon $updated_at
@@ -17,6 +19,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Memmo extends Model
 {
     use HasFactory, SoftDeletes;
+    use AttributeSavedAt;
 
     protected $fillable = ['user_id', 'memo'];
 
@@ -41,17 +44,5 @@ class Memmo extends Model
     private function getMemoLines(): array
     {
         return explode("\n", $this->memo);
-    }
-
-    public function getTimestampAttribute(): string
-    {
-        /** @var Carbon $timestamp */
-        $timestamp = $this->updated_at ?? $this->created_at;
-
-        return $timestamp->isSameMonth()
-            ? $timestamp->diffForHumans()
-            : $timestamp->format(
-                $timestamp->isSameYear() ? 'n/j H:i' : 'n/j/Y'
-            );
     }
 }
