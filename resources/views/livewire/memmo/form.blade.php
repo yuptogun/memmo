@@ -1,7 +1,7 @@
 <form wire:submit="store" class="w-full" x-data="{memo: null}">
     @csrf
     <div class="w-full">
-        <textarea
+        <textarea name="memo"
             class="w-full rounded border border-gray-200 shadow-inner h-32 md:h-36"
             wire:model="memo" x-model="memo"
             placeholder="{{ $placeholder }}" required></textarea>
