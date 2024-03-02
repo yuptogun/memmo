@@ -8,7 +8,7 @@
   </div>
   <div class="w-full py-6">
     <div class="w-full">
-      <textarea name="memo" x-model="memo" class="w-full rounded border border-gray-200 bg-gray-300 shadow-inner h-32 md:h-36"
+      <textarea class="w-full rounded border border-gray-200 bg-gray-300 shadow-inner h-32 md:h-36"
         placeholder="Here you add your notes and hit 'MEMMO' button below, and your note will be saved." disabled></textarea>
     </div>
     <button class="block w-full p-2 bg-binder text-white rounded disabled:bg-binder-300 font-bold" type="button" disabled>MEMMO</button>

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', Auth::check() ? 'dashboard' : 'welcome')->name('index');
+Route::view('/', 'welcome');
 
-// Route::view('dashboard', 'dashboard')
-//     ->middleware(['auth', 'verified'])
-//     ->name('dashboard');
+Route::view('memmo', 'memmo')
+    ->middleware(['auth', 'verified'])
+    ->name('memmo');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
