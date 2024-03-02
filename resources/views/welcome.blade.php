@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <livewire:welcome.navigation />
-            @endif
-
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    y u no memo?
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+<x-app-layout>
+  <div>
+    <h1 class="mb-3">
+      <span class="text-2xl">This is a memo app,</span><br>
+      <span class="text-xl">but with no "add new" button.</span>
+    </h1>
+    <p class="ms-3">Instead you're given with a form like this. Now you can't forget how to compose new notes here.</p>
+  </div>
+  <div class="w-full py-6">
+    <div class="w-full">
+      <textarea class="w-full rounded border border-gray-200 bg-gray-300 shadow-inner h-32 md:h-36"
+        placeholder="Here you add your notes and hit 'MEMMO' button below, and your note will be saved." disabled></textarea>
+    </div>
+    <button class="block w-full p-2 bg-binder text-white rounded disabled:bg-binder-300 font-bold" type="button" disabled>MEMMO</button>
+  </div>
+  <div>
+    <h2 class="mb-3">
+      <span class="text-xl">Straight and hassle-free,</span><br>
+      <span class="text-lg">just as any kind of notepad should be.</span>
+    </h2>
+    <div class="ms-3">
+      <p class="mb-3">MEMMO is not going to be a "knowledgebase management app" -- it's a virtual legal pad after all.</p>
+      <p class="mb-3">You come up with something, you open MEMMO, you dump it here, you forget and move on. Life can be that simple.</p>
+    </div>
+  </div>
+</x-app-layout>

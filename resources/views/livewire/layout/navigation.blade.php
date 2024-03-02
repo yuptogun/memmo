@@ -22,7 +22,7 @@ new class extends Component
     <div class="flex justify-between h-16">
       <div class="flex">
         <div class="shrink-0 flex items-center">
-          <a href="{{ route('dashboard') }}" wire:navigate>
+          <a href="{{ route('memmo') }}" wire:navigate>
             <x-application-logo />
           </a>
         </div>
@@ -35,6 +35,7 @@ new class extends Component
 
       <!-- Settings Dropdown -->
       <div class="hidden sm:flex sm:items-center sm:ms-6">
+        @auth
         <x-dropdown align="right">
           <x-slot name="trigger">
             <button
@@ -65,6 +66,10 @@ new class extends Component
             </button>
           </x-slot>
         </x-dropdown>
+        @else
+        <a class="ms-4" href="{{ route('register') }}">{{ __('Register') }}</a>
+        <a class="ms-4" href="{{ route('login') }}">{{ __('Log in') }}</a>
+        @endif
       </div>
 
       <!-- Hamburger -->
@@ -84,16 +89,16 @@ new class extends Component
 
   <!-- Responsive Navigation Menu -->
   <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-    <div class="pt-2 pb-3 space-y-1">
-      {{-- 바인더 선택 드롭다운 --}}
-    </div>
-
     <!-- Responsive Settings Options -->
-    <div class="pt-4 pb-1 border-t border-gray-200">
-      <div class="px-4">
-        <div class="font-medium text-base text-gray-800" x-data="{{ json_encode(['name' => auth()->user()->name]) }}"
+    <div class="py-2 border-t border-binder-700">
+      @auth
+      {{-- <div class="pt-2 pb-3 space-y-1">
+        바인더 선택 드롭다운
+      </div> --}}
+      <div class="px-3">
+        <div class="font-medium text-base text-gray-200" x-data="{{ json_encode(['name' => auth()->user()->name]) }}"
           x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
-        <div class="font-medium text-sm text-gray-500">{{ auth()->user()->email }}</div>
+        <div class="font-medium text-sm text-gray-400">{{ auth()->user()->email }}</div>
       </div>
 
       <div class="mt-3 space-y-1">
@@ -108,6 +113,14 @@ new class extends Component
           </x-responsive-nav-link>
         </button>
       </div>
+      @else
+      <x-responsive-nav-link :href="route('register')" wire:navigate>
+        {{ __('Register') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('login')" wire:navigate>
+        {{ __('Log In') }}
+      </x-responsive-nav-link>
+      @endif
     </div>
   </div>
 </nav>
