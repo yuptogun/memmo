@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', fn () => view(Auth::check() ? 'memmo' : 'welcome'));
 
 Route::view('memmo', 'memmo')
     ->middleware(['auth', 'verified'])
