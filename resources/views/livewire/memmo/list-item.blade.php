@@ -9,7 +9,9 @@
     </div>
     <div class="mt-3" x-show="open" x-cloak>
       <div x-show="$wire.mode === 'show'">
-        <div class="prose">{!! Str::markdown($memmo->content) !!}</div>
+        <div class="prose">
+          {!! nl2br($memmo->content) !!}
+        </div>
         <div class="flex justify-between items-center mt-3">
           <span x-text="(new Date(1000 * $wire.savedAt - 60 * (new Date).getTimezoneOffset())).toLocaleString()" class="text-gray-500 text-xs me-3"></span>
           <div class="text-sm grid grid-cols-2 gap-3">
