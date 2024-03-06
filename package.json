@@ -1,4 +1,5 @@
 {
+    "name": "memmo",
     "private": true,
     "type": "module",
     "scripts": {
