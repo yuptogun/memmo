@@ -22,7 +22,7 @@ new class extends Component
     <div class="flex justify-between h-16">
       <div class="flex">
         <div class="shrink-0 flex items-center">
-          <a href="{{ route('memmo') }}" wire:navigate>
+          <a href="/" wire:navigate>
             <x-application-logo />
           </a>
         </div>
