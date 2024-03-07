@@ -18,8 +18,8 @@ class Form extends Component
     public function mount()
     {
         $this->placeholder = collect([
-            'hint: first line is the subject',
-            'hint: markdown to be supported soon',
+            'hint: first line becomes the subject',
+            'hint: auto hyperlinks to be supported soon',
         ])->random();
     }
 
