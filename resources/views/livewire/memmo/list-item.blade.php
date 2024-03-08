@@ -31,7 +31,7 @@
           <div class="text-sm grid grid-cols-2 gap-3">
             <button type="button" class="text-paper-600 hover:text-paper-800"
               x-on:click="$wire.mode = 'show'">cancel</button>
-            <button type="button" class="text-sm bg-paper-600 hover:bg-paper-800 text-white rounded px-2 py-1"
+            <button type="button" class="btn-secondary text-sm px-2 py-1"
               wire:click="edit">edit</button>
           </div>
         </div>
