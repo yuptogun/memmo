@@ -1,1 +1,1 @@
-{{ config('app.name') }}
+<span translate="no">{{ config('app.name') }}</span>

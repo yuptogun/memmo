@@ -5,11 +5,14 @@ namespace App\Livewire\Memmo;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Models\User;
 
 class Form extends Component
 {
+    use AuthorizesRequests;
+
     #[Validate('required')]
     public string $memo = '';
 
