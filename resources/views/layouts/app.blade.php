@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'memmo') }}</title>
+  <title>@yield('title', config('app.name', 'memmo'))</title>
 
   <link rel="shortcut icon" href="{{ url('favicons/favicon.ico') }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url('favicons/apple-touch-icon.png') }}">

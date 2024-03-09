@@ -3,6 +3,7 @@
 namespace App\Livewire\Memmo;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 
 use App\Models\Memmo;
@@ -17,6 +18,8 @@ class ListItem extends Component
     #[Validate('required')]
     public string $memo;
 
+    #[On('memmo-shared')]
+    #[On('memmo-unshared')]
     public function render()
     {
         $this->setData();
