@@ -53,9 +53,7 @@ class Memmo extends Model
 
     public function getShareCodeAttribute(): ?string
     {
-        return $this->is_shared
-            ? ($this->getConfig('share_code_alias') ?? $this->getConfig('share_code'))
-            : null;
+        return $this->getConfig('share_code');
     }
 
     public function share(?string $alias = null): self
@@ -64,12 +62,6 @@ class Memmo extends Model
 
         if (!$this->hasConfig('share_code')) {
             $this->setConfig('share_code', fn () => Str::random(8), self::VALUE_NEW);
-        }
-
-        if ((string) $alias !== '') {
-            if (!$this->configValueExists('share_code_alias', $alias)) {
-                $this->setConfig('share_code_alias', $alias);
-            }
         }
 
         return $this;

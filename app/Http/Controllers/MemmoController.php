@@ -17,11 +17,8 @@ class MemmoController extends Controller
     public function showShared(string $shareCode)
     {
         $memmo = Cache::remember("memmo:shared:$shareCode", 86400, function () use ($shareCode) {
-            $memmo = Config::where(fn ($where) =>
-                $where->where(fn ($w1) => $w1->keyValue('share_code_alias', $shareCode))
-                    ->orWhere(fn ($w2) => $w2->keyValue('share_code', $shareCode))
-            )->firstOrFail()->configurable;
-            return $memmo && $memmo->is_shared ? $memmo : null;
+            $m = Config::keyValue('share_code', $shareCode)->firstOrFail()->configurable;
+            return $m && $m->is_shared ? $m : null;
         });
 
         return $memmo ? view('show-public', ['memmo' => $memmo]) : abort(404);

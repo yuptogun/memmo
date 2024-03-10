@@ -13,7 +13,6 @@ class Sharer extends Component
     use AuthorizesRequests;
 
     public Memmo $memmo;
-    public string $alias; // not suppored yet
 
     public function render()
     {
