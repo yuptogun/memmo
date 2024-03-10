@@ -3,7 +3,7 @@
   <div>
     <h1>
       <span class="text-2xl">Meet <x-application-logo></x-application-logo>,</span><br>
-      <span class="text-xl">the note app with one field and one button.</span>
+      <span class="text-xl">a note app with one field and one button.</span>
     </h1>
   </div>
   <div class="w-full py-6">
@@ -15,11 +15,11 @@
   </div>
   <div>
     <h2 class="mb-3">
-      <span class="text-xl">It's your idea toilet.</span><br>
-      <span class="text-lg">Open it, take a shit and save your day.</span>
+      <span class="text-xl">It's your idea outlet.</span><br>
+      <span class="text-lg">It will save your day when you're in a greatest hurry.</span>
     </h2>
     <div class="mx-3">
-      <p class="mb-3">To my surprise, most of the note apps have buttons like "add", "new", "+". I never got used to find and click those buttons because who tf cares the buttons?? My ideas are already vaporizing! I don't need any fancy apps that demands extra actions to start writing; I need a toilet that I can rush into, write my shit down and flush!!</p>
+      <p class="mb-3">To my surprise, most of the note apps have buttons like "add", "new", "+". I never got used to find and click those buttons because who cares the buttons?? My ideas are already vaporizing! I don't need any more buttons, I need a toilet that I can rush into, write my shit down and flush!!</p>
       <p class="mb-3">So I decided to incarnate what virtual legal pads should look like. The first version is made in 2019, this one 2024.</p>
     </div>
   </div>

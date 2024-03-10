@@ -1,6 +1,6 @@
 {
     "name": "memmo",
-    "description": "A memo app with min # of buttons",
+    "description": "one field, one button",
     "short_name": "memmo",
     "icons": [{
         "src": "/favicons/android-chrome-192x192.png",
