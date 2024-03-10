@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -56,21 +57,41 @@ class Memmo extends Model
         return $this->getConfig('share_code');
     }
 
-    public function share(?string $alias = null): self
+    public function getCacheKeySharedAttribute(): string
     {
-        $this->setConfig('is_shared', '1');
+        return sprintf('memmo:shared:%s', $this->share_code);
+    }
 
+    public function share(): self
+    {
+        // issue share code only once
         if (!$this->hasConfig('share_code')) {
             $this->setConfig('share_code', fn () => Str::random(8), self::VALUE_NEW);
         }
 
-        return $this;
+        return $this->setConfig('is_shared', '1')->cacheShare();
     }
 
     public function unshare(): self
     {
-        // keep share_code & share_code_alias
-        return $this->unsetConfig('is_shared');
+        // keep share_code
+        return $this->unsetConfig('is_shared')->cacheUnshare();
+    }
+
+    private function cacheShare(): self
+    {
+        return tap(
+            $this, fn (Memmo $memmo) =>
+                Cache::set($memmo->cache_key_shared, $memmo, 86400)
+        );
+    }
+
+    private function cacheUnshare(): self
+    {
+        return tap(
+            $this, fn (Memmo $memmo) =>
+                Cache::forget($memmo->cache_key_shared)
+        );
     }
 
     private function getMemoLines(): array

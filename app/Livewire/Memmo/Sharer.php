@@ -22,16 +22,12 @@ class Sharer extends Component
     public function share()
     {
         $this->memmo->share();
-        Cache::set('memmo:shared:' . $this->memmo->share_code, $this->memmo, 86400);
-
         $this->dispatch('memmo-shared');
     }
 
     public function unshare()
     {
         $this->memmo->unshare();
-        Cache::forget('memmo:shared:' . $this->memmo->share_code);
-
         $this->dispatch('memmo-unshared');
     }
 }

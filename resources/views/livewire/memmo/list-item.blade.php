@@ -1,7 +1,12 @@
 <div>
   <div class="border-binder-200 p-3" x-data="{open: false}">
     <div class="flex justify-between">
-      <span>{{ $memmo->title }}</span>
+      <span>
+        {{ $memmo->title }}
+        @if ($memmo->is_shared)
+            <span class="text-xs text-paper-400">(public)</span>
+        @endif
+      </span>
       <button class="cursor-pointer text-binder-500 hover:text-binder-800"
         x-on:click="open = !open;">
         {{ $memmo->saved_around }}
@@ -16,7 +21,7 @@
           <div class="text-xs">
             <span x-text="(new Date(1000 * $wire.savedAt - 60 * (new Date).getTimezoneOffset())).toLocaleString()" class="text-gray-500 me-3"></span>
             <button type="button" class="text-red-400 hover:text-red-600"
-              wire:confirm="cannot be undone! you sure?"
+              wire:confirm="cannot be undone! you sure?{{ $memmo->is_shared ? ' (maybe you want unshare instead, but if you really want delete, hit OK.)' : '' }}"
               wire:click="delete">delete</button>
           </div>
           <div class="text-sm">

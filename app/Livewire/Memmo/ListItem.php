@@ -36,6 +36,7 @@ class ListItem extends Component
 
     public function delete()
     {
+        $this->memmo->unshare();
         $this->memmo->delete();
         $this->dispatch('memmo-deleted');
     }
