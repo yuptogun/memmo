@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
+use App\Models\Memmo;
 use App\Models\Config;
 
 class MemmoController extends Controller
@@ -16,11 +17,13 @@ class MemmoController extends Controller
 
     public function showShared(string $shareCode)
     {
-        $memmo = Cache::remember("memmo:shared:$shareCode", 86400, function () use ($shareCode) {
-            $m = Config::keyValue('share_code', $shareCode)->firstOrFail()->configurable;
-            return $m && $m->is_shared ? $m : null;
-        });
+        $memmo = Cache::remember("memmos:share_code:$shareCode", 86400, fn() =>
+            Config::where(['configurable_type' => Memmo::class])
+                ->keyValue('share_code', $shareCode)
+                ->firstOrFail()
+                ?->configurable
+        );
 
-        return $memmo ? view('show-public', ['memmo' => $memmo]) : abort(404);
+        return $memmo->is_shared ? view('show-public', ['memmo' => $memmo]) : abort(404);
     }
 }
