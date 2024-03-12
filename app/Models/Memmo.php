@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use App\Models\Traits\AttributeSavedAt;
+use App\Models\Traits\HasSavedAt;
 use App\Models\Traits\CachesItself;
 use App\Models\Traits\IsConfigurable;
 
@@ -25,8 +25,7 @@ use App\Models\Traits\IsConfigurable;
 class Memmo extends Model
 {
     use HasFactory, SoftDeletes;
-    use AttributeSavedAt, IsConfigurable;
-    use CachesItself;
+    use HasSavedAt, CachesItself, IsConfigurable;
 
     protected $fillable = ['user_id', 'memo'];
 

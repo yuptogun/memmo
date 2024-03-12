@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
  * @property-read Carbon saved_at
  * @property-read string saved_around
  */
-trait AttributeSavedAt
+trait HasSavedAt
 {
     public function getSavedAtAttribute(): Carbon
     {
