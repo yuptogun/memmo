@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use Generator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use App\Models\Traits\IsConfigurable;
 use App\Models\Traits\AttributeSavedAt;
+use App\Models\Traits\CachesItself;
+use App\Models\Traits\IsConfigurable;
 
 /**
  * @property string $memo
@@ -25,6 +26,7 @@ class Memmo extends Model
 {
     use HasFactory, SoftDeletes;
     use AttributeSavedAt, IsConfigurable;
+    use CachesItself;
 
     protected $fillable = ['user_id', 'memo'];
 
@@ -32,7 +34,8 @@ class Memmo extends Model
     {
         parent::boot();
 
-        static::saved(fn (self $memmo) => $memmo->uncacheShare());
+        static::saved(fn (self $memmo) => $memmo->cacheSelf());
+        static::deleted(fn (self $memmo) => $memmo->uncacheSelf());
     }
 
     public function user(): BelongsTo
@@ -64,39 +67,27 @@ class Memmo extends Model
         return $this->getConfig('share_code');
     }
 
-    public function getCacheKeySharedAttribute(): string
-    {
-        return sprintf('memmo:shared:%s', $this->share_code);
-    }
-
     public function share(): self
     {
         if (!$this->hasConfig('share_code')) {
             $this->setConfig('share_code', fn () => Str::random(8), self::VALUE_NEW);
         }
-
-        return $this->setConfig('is_shared', '1')->cacheShare();
+        return $this->setConfig('is_shared', '1');
     }
 
     public function unshare(): self
     {
-        return $this->unsetConfig('is_shared')->uncacheShare();
+        return $this->unsetConfig('is_shared');
     }
 
-    private function cacheShare(): self
+    protected function getSelfCacheKeys(): Generator
     {
-        return tap(
-            $this, fn (Memmo $memmo) =>
-                Cache::set($memmo->cache_key_shared, $memmo, 86400)
-        );
-    }
+        yield fn(self $memmo) => "id:" . $memmo->getKey();
 
-    private function uncacheShare(): self
-    {
-        return tap(
-            $this, fn (Memmo $memmo) =>
-                Cache::forget($memmo->cache_key_shared)
-        );
+        $shareCode = $this->getConfig('share_code');
+        if ($shareCode) {
+            yield fn(self $memmo) => "share_code:$shareCode";
+        }
     }
 
     private function getMemoLines(): array
