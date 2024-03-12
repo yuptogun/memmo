@@ -28,6 +28,13 @@ class Memmo extends Model
 
     protected $fillable = ['user_id', 'memo'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saved(fn (self $memmo) => $memmo->uncacheShare());
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -64,7 +71,6 @@ class Memmo extends Model
 
     public function share(): self
     {
-        // issue share code only once
         if (!$this->hasConfig('share_code')) {
             $this->setConfig('share_code', fn () => Str::random(8), self::VALUE_NEW);
         }
@@ -74,8 +80,7 @@ class Memmo extends Model
 
     public function unshare(): self
     {
-        // keep share_code
-        return $this->unsetConfig('is_shared')->cacheUnshare();
+        return $this->unsetConfig('is_shared')->uncacheShare();
     }
 
     private function cacheShare(): self
@@ -86,7 +91,7 @@ class Memmo extends Model
         );
     }
 
-    private function cacheUnshare(): self
+    private function uncacheShare(): self
     {
         return tap(
             $this, fn (Memmo $memmo) =>
