@@ -43,12 +43,15 @@ trait IsConfigurable
         ])->exists();
     }
 
-    public function getConfig(string $key): ?string
+    public function getConfig(string $key, ?string $default = null): ?string
     {
         return Cache::remember(
             $this->getConfigCacheKey($key),
             86400,
-            fn () => $this->configs()->key($key)->first()?->value
+            function () use ($key, $default) {
+                $config = $this->configs()->key($key)->first();
+                return $config ? $config->value : ($default ?? null);
+            }
         );
     }
 
