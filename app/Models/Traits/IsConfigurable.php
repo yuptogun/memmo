@@ -13,7 +13,7 @@ use App\Models\Config;
 /**
  * every configurable models might know/perform these:
  *
- * @method static self|Builder config(string $key, string $value)
+ * @method static Config|Builder configs()
  */
 trait IsConfigurable
 {
@@ -67,14 +67,16 @@ trait IsConfigurable
                 Cache::set($this->getConfigCacheKey($key), $value, 86400);
             }
         );
-        return $this;
+
+        return tap($this, fn(Model $model) => $model->touch());
     }
 
     public function unsetConfig(string $key): self
     {
         $this->configs()->key($key)->delete();
         Cache::forget($this->getConfigCacheKey($key));
-        return $this;
+
+        return tap($this, fn(Model $model) => $model->touch());
     }
 
     protected function getValidValue($value, int $options, string $key): string
@@ -104,6 +106,6 @@ trait IsConfigurable
     protected function getConfigCacheKey(string $key): string
     {
         /** @var Model $this */
-        return sprintf('config:%s:%d:%s', $this->getTable(), $this->getKey(), $key);
+        return sprintf('configs:%s:%d:%s', $this->getTable(), $this->getKey(), $key);
     }
 }
