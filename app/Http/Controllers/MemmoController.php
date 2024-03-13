@@ -18,7 +18,7 @@ class MemmoController extends Controller
     public function showShared(string $shareCode)
     {
         $memmo = Cache::remember("memmos:share_code:$shareCode", 86400, fn() =>
-            Config::where(['configurable_type' => Memmo::class])
+            Config::whereHasMorph('configurable', [Memmo::class])
                 ->keyValue('share_code', $shareCode)
                 ->firstOrFail()
                 ?->configurable
