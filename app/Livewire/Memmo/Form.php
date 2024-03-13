@@ -3,6 +3,7 @@
 namespace App\Livewire\Memmo;
 
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -39,6 +40,7 @@ class Form extends Component
         $this->dispatch('memmo-created');
     }
 
+    #[On('memmo-created')]
     public function render()
     {
         return view('livewire.memmo.form');
