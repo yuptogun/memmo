@@ -1,6 +1,6 @@
 <div>
   <div class="border-binder-200 p-3" x-data="{open: false}">
-    <div class="flex justify-between">
+    <div class="flex justify-between" x-show="$wire.mode === 'show'">
       <span>
         {{ $memmo->title }}
         @if ($memmo->is_shared)
