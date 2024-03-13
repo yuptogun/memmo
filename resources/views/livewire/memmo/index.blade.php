@@ -5,8 +5,10 @@
         @livewire('memmo.list-item', ['memmo' => $memmo], key($memmo->id))
         @endforeach
     </div>
-    {{ $memmos->links() }}
     @else
-    <h3 class="p-6 mb-2 text-center text-xl">y u no memmo</h3>
+    <h3 class="my-6 py-6 text-center text-xl">y u no memmo</h3>
     @endif
+    <div class="pt-6">
+        {{ $memmos->links('livewire.memmo.paginator') }}
+    </div>
 </div>
