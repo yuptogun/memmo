@@ -14,7 +14,7 @@
     </div>
     <div class="mt-3" x-show="open" x-cloak>
       <div x-show="$wire.mode === 'show'">
-        <div class="prose">
+        <div class="prose" x-memmo>
           {!! nl2br($memmo->content) !!}
         </div>
         <div class="flex justify-between items-center mt-3">

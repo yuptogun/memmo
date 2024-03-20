@@ -39,6 +39,7 @@
         &copy; 2019~ by <a href="https://yuptogun.com/" target="_blank" class="hover:border-b">yuptogun</a>
       </div>
   </div>
+  @livewireScriptConfig
 </body>
 
 </html>
