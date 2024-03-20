@@ -1,5 +1,5 @@
 import './bootstrap';
-import { Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import { Alpine, Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm';
 
 Alpine.directive('memmo', (el) => {
     let regex = /(https?:\/\/\S+)/g;

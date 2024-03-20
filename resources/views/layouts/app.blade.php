@@ -34,10 +34,9 @@
         {{ $slot }}
       </main>
     </div>
-
-      <div class="pt-8 pb-4 text-center text-gray-200 text-xs">
-        &copy; 2019~ by <a href="https://yuptogun.com/" target="_blank" class="hover:border-b">yuptogun</a>
-      </div>
+    <div class="pt-8 pb-4 text-center text-gray-200 text-xs">
+      &copy; 2019~ by <a href="https://yuptogun.com/" target="_blank" class="hover:border-b">yuptogun</a>
+    </div>
   </div>
   @livewireScriptConfig
 </body>
