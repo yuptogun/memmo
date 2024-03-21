@@ -1,0 +1,12 @@
+.vscode/
+.git/
+
+public/hot
+.*ignore
+.env
+.editorconfig
+.gitattribute
+docker-compose.yml
+Dockerfile
+phpunit.xml
+README.md
