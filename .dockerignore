@@ -1,5 +1,8 @@
 .vscode/
 .git/
+bootstrap/cache/*.php
+storage/framework/cache/*
+tests/
 
 public/hot
 .*ignore
