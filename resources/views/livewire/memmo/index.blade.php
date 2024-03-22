@@ -1,6 +1,6 @@
 <div>
     @if ($memmos->isNotEmpty())
-    <div class="grid grid-cols-1 divide-y">
+    <div class="grid grid-cols-1 divide-y" wire:loading.class="opacity-25">
         @foreach ($memmos as $memmo)
         @livewire('memmo.list-item', ['memmo' => $memmo], key($memmo->id))
         @endforeach

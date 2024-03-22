@@ -19,7 +19,7 @@
   <meta name="msapplication-TileColor" content="#624538">
   <meta name="theme-color" content="#624538">
   <link rel="stylesheet" href="/fonts/freesans.css" />
-
+  @livewireStyles
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
