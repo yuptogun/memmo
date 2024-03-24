@@ -1,0 +1,15 @@
+.vscode/
+.git/
+bootstrap/cache/*.php
+storage/framework/cache/*
+tests/
+
+public/hot
+.*ignore
+.env
+.editorconfig
+.gitattribute
+docker-compose.yml
+Dockerfile
+phpunit.xml
+README.md
