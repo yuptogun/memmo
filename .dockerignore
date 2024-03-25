@@ -1,5 +1,7 @@
 .vscode/
 .git/
+vendor/
+node_modules/
 bootstrap/cache/*.php
 storage/framework/cache/*
 tests/
