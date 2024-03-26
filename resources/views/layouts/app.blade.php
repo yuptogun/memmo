@@ -8,12 +8,12 @@
 
   <title>@yield('title', config('app.name', 'memmo'))</title>
 
-  <link rel="shortcut icon" href="{{ url('favicons/favicon.ico') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ url('favicons/apple-touch-icon.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ url('favicons/favicon-32x32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ url('favicons/favicon-16x16.png') }}">
-  <link rel="manifest" href="{{ url('favicons/site.webmanifest') }}">
-  <link rel="mask-icon" href="{{ url('favicons/safari-pinned-tab.svg') }}" color="#624538">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#624538">
   <meta name="apple-mobile-web-app-title" content="memmo">
   <meta name="application-name" content="memmo">
   <meta name="msapplication-TileColor" content="#624538">
