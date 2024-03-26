@@ -3,7 +3,7 @@ FROM composer AS s
 WORKDIR /app
 COPY . .
 RUN composer install --prefer-dist --no-dev --ignore-platform-req=php --no-scripts && \
-    composer dump-autoload --ignore-platform-req=php && \
+    composer dump-autoload --ignore-platform-req=php --no-scripts && \
     mv vendor/ .vendor/
 
 # build client with ../../vendor/livewire/livewire/dist/livewire.esm
