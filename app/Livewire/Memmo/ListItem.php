@@ -60,10 +60,14 @@ class ListItem extends Component
 
     public function edit()
     {
-        /** @var Memmo $model `$this->memmo` is something cached/computed, so you don't want to update it */
-        $model = $this->memmo;
+        // stop handling cached/computed model
+        unset($this->memmo);
+
+        // handle "fresh" one instead
+        $model = Memmo::find($this->id);
         $model->memo = $this->memo;
         $model->save();
+
         $this->mode = 'show';
         $this->setData();
     }
@@ -78,7 +82,6 @@ class ListItem extends Component
 
     private function setData()
     {
-        unset($this->memmo, $this->savedAt, $this->lines);
         $this->memo = $this->memmo->memo;
     }
 }

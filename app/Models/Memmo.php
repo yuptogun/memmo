@@ -19,7 +19,6 @@ use App\Models\Traits\IsConfigurable;
  * @property string $memo
  * @property null|Carbon $updated_at
  * @property-read string title
- * @property-read string timestamp
  * @property-read bool is_shared
  * @property-read null|string share_code
  */
