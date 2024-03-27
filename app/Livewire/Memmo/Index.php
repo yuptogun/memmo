@@ -38,6 +38,7 @@ class Index extends Component
 
     #[On('memmo-created')]
     #[On('memmo-deleted')]
+    #[On('search-changed')]
     public function resetPagination(bool $resetSearch = false)
     {
         if ($resetSearch) {
