@@ -14,9 +14,16 @@ class ListItem extends Component
     public int $savedAt;
     public int $lines;
     public string $mode = 'show';
+    public bool $inited = false;
 
     #[Validate('required')]
     public string $memo;
+
+    public function init()
+    {
+        $this->setData();
+        $this->inited = true;
+    }
 
     #[On('memmo-shared')]
     #[On('memmo-unshared')]

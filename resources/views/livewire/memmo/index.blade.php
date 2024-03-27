@@ -6,7 +6,9 @@
         @livewire('memmo.list-item', ['memmo' => $memmo], key($memmo->id))
         @endforeach
       </div>
-      <div wire:loading class="my-6 py-6 text-center text-lg w-full text-gray-500">loading...</div>
+      <div wire:loading class="my-6 py-6 text-center text-lg w-full">
+        @include('livewire.partials.loading')
+      </div>
     @else
       <h3 class="my-6 py-6 text-center text-xl">y u no memmo</h3>
     @endif
@@ -14,6 +16,8 @@
         {{ $memmos->links('livewire.memmo.paginator') }}
       </div>
   @else
-    <div class="my-6 py-6 text-center text-lg w-full text-gray-500">loading...</div>
+    <div class="my-6 py-6 text-center text-lg w-full">
+      @include('livewire.partials.loading')
+    </div>
   @endif
 </div>
