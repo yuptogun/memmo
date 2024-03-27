@@ -17,17 +17,19 @@
         <div class="prose break-words" x-memmo>
           {!! nl2br($memmo->content) !!}
         </div>
-        <div class="flex justify-between items-center mt-3">
-          <div class="text-xs">
+        <div class="flex flex-col sm:flex-row justify-between mt-3 text-sm">
+          <div>
             <span x-text="(new Date(1000 * $wire.savedAt - 60 * (new Date).getTimezoneOffset())).toLocaleString()" class="text-gray-500 me-3"></span>
+          </div>
+          <div class="flex justify-between sm:flex-1">
             <button type="button" class="text-red-400 hover:text-red-600"
               wire:confirm="cannot be undone! you sure?{{ $memmo->is_shared ? ' (maybe you want unshare instead, but if you really want delete, hit OK.)' : '' }}"
               wire:click="delete">delete</button>
-          </div>
-          <div class="text-sm">
-            @livewire('memmo.sharer', ['memmo' => $memmo], key($memmo->id))
-            <button type="button" class="ms-3 text-paper-600 hover:text-paper-800"
-              x-on:click="$wire.mode = 'edit'">edit</button>
+            <div class="text-end">
+              @livewire('memmo.sharer', ['memmo' => $memmo], key($memmo->id))
+              <button type="button" class="ms-3 text-paper-600 hover:text-paper-800"
+                x-on:click="$wire.mode = 'edit'">edit</button>
+            </div>
           </div>
         </div>
       </div>
