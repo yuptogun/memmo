@@ -1,20 +1,20 @@
 <div>
   <div class="border-binder-200 p-3" x-data="{open: false}">
     <div class="flex justify-between" x-show="$wire.mode === 'show'">
-      <span>
+      <span class="break-all">
         {{ $memmo->title }}
         @if ($memmo->is_shared)
-            <span class="text-xs text-paper-400">(public)</span>
+            <span class="text-xs text-paper-400 inline-block text-nowrap">(public)</span>
         @endif
       </span>
-      <button class="cursor-pointer text-binder-500 hover:text-binder-800"
+      <button class="ps-3 cursor-pointer text-end text-nowrap text-binder-500 hover:text-binder-800"
         x-on:click="open = !open;">
         {{ $memmo->saved_around }}
       </button>
     </div>
     <div class="mt-3" x-show="open" x-cloak>
       <div x-show="$wire.mode === 'show'">
-        <div class="prose" x-memmo>
+        <div class="prose break-words" x-memmo>
           {!! nl2br($memmo->content) !!}
         </div>
         <div class="flex justify-between items-center mt-3">
