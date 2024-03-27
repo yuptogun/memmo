@@ -43,6 +43,9 @@ trait IsConfigurable
         ])->exists();
     }
 
+    /**
+     * @param string|null $default null not recommended -- which leads to pointless empty queries
+     */
     public function getConfig(string $key, ?string $default = null): ?string
     {
         return Cache::remember(

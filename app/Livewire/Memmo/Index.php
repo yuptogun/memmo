@@ -16,6 +16,13 @@ class Index extends Component
     #[Url]
     public string $search = '';
 
+    public $inited = false;
+
+    public function init()
+    {
+        $this->inited = true;
+    }
+
     public function render()
     {
         /** @var User $user */
@@ -31,6 +38,7 @@ class Index extends Component
 
     #[On('memmo-created')]
     #[On('memmo-deleted')]
+    #[On('search-changed')]
     public function resetPagination(bool $resetSearch = false)
     {
         if ($resetSearch) {

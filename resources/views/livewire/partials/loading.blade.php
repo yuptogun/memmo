@@ -1,0 +1,1 @@
+<span class="text-gray-500 animate-pulse">loading...</span>

@@ -15,6 +15,7 @@ use App\Models\Traits\CachesItself;
 use App\Models\Traits\IsConfigurable;
 
 /**
+ * @property-read int id
  * @property string $memo
  * @property null|Carbon $updated_at
  * @property-read string title
@@ -57,7 +58,7 @@ class Memmo extends Model
 
     public function getIsSharedAttribute(): bool
     {
-        return $this->getConfig('is_shared')
+        return $this->getConfig('is_shared', '0')
             && $this->getConfig('share_code');
     }
 

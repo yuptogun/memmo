@@ -3,6 +3,7 @@
     <input type="text" placeholder="type to filter"
       wire:model.live.debounce.500ms="search"
       wire:loading.attr="disabled"
+      x-on:change="$dispatch('search-changed')"
       class="text-sm form-input rounded border border-gray-200 shadow-inner bg-paper-50 focus:ring-paper-600 focus:border-paper-600 focus:bg-white w-full sm:w-auto" />
   </div>
   <div class="flex-1 w-full sm:flex-auto sm:w-auto">
@@ -14,7 +15,9 @@
             wire:click="resetPagination(true)">(reset)</a>
         </div>
         <div wire:loading>
-          <span class="text-sm text-gray-500 ms-2">loading...</span>
+          <span class="text-sm ms-2">
+            @include('livewire.partials.loading')
+          </span>
         </div>
       </div>
       <nav role="navigation" aria-label="Memmo Pagination Navigation" class="flex justify-self-end gap-2 items-center">
