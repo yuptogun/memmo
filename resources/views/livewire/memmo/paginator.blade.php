@@ -15,7 +15,9 @@
             wire:click="resetPagination(true)">(reset)</a>
         </div>
         <div wire:loading>
-          <span class="text-sm text-gray-500 ms-2">loading...</span>
+          <span class="text-sm ms-2">
+            @include('livewire.partials.loading')
+          </span>
         </div>
       </div>
       <nav role="navigation" aria-label="Memmo Pagination Navigation" class="flex justify-self-end gap-2 items-center">

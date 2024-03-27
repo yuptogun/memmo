@@ -3,7 +3,7 @@
     @if ($memmos->isNotEmpty())
       <div class="grid grid-cols-1 divide-y" wire:loading.remove>
         @foreach ($memmos as $memmo)
-        @livewire('memmo.list-item', ['memmo' => $memmo], key($memmo->id))
+        @livewire('memmo.list-item', ['id' => $memmo->id], key($memmo->id))
         @endforeach
       </div>
       <div wire:loading class="my-6 py-6 text-center text-lg w-full">
