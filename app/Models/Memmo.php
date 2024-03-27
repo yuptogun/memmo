@@ -57,7 +57,7 @@ class Memmo extends Model
 
     public function getIsSharedAttribute(): bool
     {
-        return $this->getConfig('is_shared')
+        return $this->getConfig('is_shared', '0')
             && $this->getConfig('share_code');
     }
 
