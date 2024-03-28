@@ -19,7 +19,6 @@ class ListItem extends Component
 {
     public int $id;
     public string $mode = 'show';
-    public bool $inited = false;
 
     #[Validate('required')]
     public string $memo;
@@ -44,10 +43,9 @@ class ListItem extends Component
         return count(explode("\n", $this->memo));
     }
 
-    public function init()
+    public function mount()
     {
         $this->setData();
-        $this->inited = true;
     }
 
     #[On('memmo-shared')]
