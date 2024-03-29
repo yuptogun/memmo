@@ -10,8 +10,8 @@
   <div class="py-6">
     <h2 class="my-6 text-center text-lg">This I believe should be how every note app works.</h2>
     <div class="mx-3 prose">
-      <p>A headfirst blank, a simple save button. Maybe then a list; everything else like is basically extra.</p>
-      <p>Please log in and get your own virtual notepad -- done in right way.</p>
+      <p>A headfirst blank, a simple save button. Maybe then a list; everything else is basically extra.</p>
+      <p>Please log in and get your own virtual notepad done in right way.</p>
     </div>
   </div>
 </x-app-layout>
