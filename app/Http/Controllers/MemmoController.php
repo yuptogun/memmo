@@ -12,7 +12,12 @@ class MemmoController extends Controller
 {
     public function index()
     {
-        return view(Auth::check() ? 'memmo' : 'welcome');
+        return Auth::check() ? view('memmo') : $this->about();
+    }
+
+    public function about()
+    {
+        return view('about');
     }
 
     public function showShared(string $shareCode)

@@ -58,6 +58,10 @@ new class extends Component
               <span class="block text-nowrap break-keep">{{ __('Profile') }}</span>
             </x-dropdown-link>
 
+            <x-dropdown-link :href="route('about')" wire:navigate>
+              <span class="block text-nowrap break-keep">{{ __('About') }}</span>
+            </x-dropdown-link>
+
             <!-- Authentication -->
             <button wire:click="logout" class="w-full text-start">
               <x-dropdown-link>

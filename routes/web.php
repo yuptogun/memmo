@@ -6,6 +6,7 @@ use App\Http\Controllers\MemmoController;
 
 Route::controller(MemmoController::class)->group(function () {
     Route::get('/',              'index')->name('index');
+    Route::get('/about',         'about')->name('about');
     Route::get('/m/{shareCode}', 'showShared')->name('show-shared');
 });
 
