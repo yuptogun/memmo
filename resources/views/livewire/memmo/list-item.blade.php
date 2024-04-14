@@ -12,8 +12,8 @@
         {{ $this->memmo->saved_around }}
       </button>
     </div>
-    <div class="mt-3" x-show="open" x-cloak>
-      <div x-show="$wire.mode === 'show'">
+    <div class="pt-3" x-show="open" x-collapse x-cloak>
+      <div x-show="$wire.mode === 'show'" class="mt-3">
         <div class="prose break-words" x-memmo>
           {!! nl2br($this->memmo->content) !!}
         </div>
