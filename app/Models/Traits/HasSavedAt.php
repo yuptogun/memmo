@@ -20,10 +20,8 @@ trait HasSavedAt
         /** @var Carbon $savedAt */
         $savedAt = $this->saved_at;
 
-        return $savedAt->diffInMonths() < 2
+        return $savedAt->isSameYear()
             ? $savedAt->diffForHumans()
-            : $savedAt->format(
-                $savedAt->isSameYear() ? 'n/j H:i' : 'n/j/Y'
-            );
+            : $savedAt->format('n/j/Y');
     }
 }
