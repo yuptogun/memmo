@@ -14,9 +14,11 @@ COPY --from=s /app/.vendor /app/vendor
 RUN npm i && npm run build && \
     mv public/ .public/
 
-FROM php:8.2-apache AS a
-WORKDIR /var/www
+FROM php:8.2-apache AS p
 RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis pdo_mysql
+
+FROM p AS a
+WORKDIR /var/www
 RUN sed -ri -e 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/*.conf && \
     sed -ri -e 's!/var/www/!/var/www/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf && \
     a2enmod rewrite && \
