@@ -3,7 +3,6 @@
 namespace App\Livewire\Memmo;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Models\Memmo;
