@@ -1,10 +1,11 @@
 <div class="flex flex-col sm:flex-row w-full justify-between gap-4 items-center">
   <div class="flex-1 w-full sm:w-auto">
-    <input type="text" placeholder="type to filter"
-      wire:model.live.debounce.500ms="search"
-      wire:loading.attr="disabled"
-      x-on:change="$dispatch('search-changed')"
-      class="text-sm form-input rounded border border-gray-200 shadow-inner bg-paper-50 focus:ring-paper-600 focus:border-paper-600 focus:bg-white w-full sm:w-auto" />
+    <form method="GET" wire:submit="$dispatch('search-changed')">
+      <input type="text" placeholder="type & enter to search" name="search"
+        wire:model="search"
+        wire:loading.attr="disabled"
+        class="text-sm form-input rounded border border-gray-200 shadow-inner bg-paper-50 focus:ring-paper-600 focus:border-paper-600 focus:bg-white w-full sm:w-auto" />
+    </form>
   </div>
   <div class="flex-1 w-full sm:flex-auto sm:w-auto">
     <div class="flex justify-between gap-2 items-center">

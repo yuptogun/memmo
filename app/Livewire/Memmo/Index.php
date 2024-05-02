@@ -7,14 +7,14 @@ use Livewire\WithPagination;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder;
 
 class Index extends Component
 {
     use WithPagination;
 
     #[Url]
-    public string $search = '';
+    public ?string $search;
 
     public function render()
     {
