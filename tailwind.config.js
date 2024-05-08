@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['FreeSans', ...defaultTheme.fontFamily.sans],
+                sans: ['Overused Grotesk', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'binder': {

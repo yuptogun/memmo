@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Overused Grotesk";
+    src:
+        url("https://memmo-cc.s3.ap-northeast-2.amazonaws.com/fonts/OverusedGrotesk-VF.woff2") format("woff2 supports variations"),
+        url("https://memmo-cc.s3.ap-northeast-2.amazonaws.com/fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
+    font-weight: 400 800;
+}
