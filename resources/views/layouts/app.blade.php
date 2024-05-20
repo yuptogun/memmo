@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://memmo.cc">
   <meta property="og:title" content="memmo">
   <meta property="og:image" content="/favicons/apple-touch-icon.png">
-  <meta property="og:description" content="this is how every note app works.">
+  <meta property="og:description" content="This I believe is how every note app should work.">
   <meta property="og:site_name" content="memmo">
   <meta property="og:locale" content="en_US">
   <meta property="og:image:width" content="180">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="https://memmo.cc" />
   <meta name="twitter:title" content="memmo" />
-  <meta name="twitter:description" content="this is how every note app works." />
+  <meta name="twitter:description" content="This I believe is how every note app should work." />
   <meta name="twitter:image" content="/favicons/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicons/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
