@@ -1,23 +1,22 @@
 # install composer packages first
-FROM composer AS s
+FROM php:8.2-apache AS s
 WORKDIR /app
 COPY . .
-RUN composer install --prefer-dist --no-dev --ignore-platform-req=php --no-scripts && \
-    composer dump-autoload --ignore-platform-req=php --no-scripts && \
+RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis pdo_mysql zip
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+RUN composer install --prefer-dist --no-dev --no-scripts && \
+    composer dump-autoload --no-scripts && \
     mv vendor/ .vendor/
 
 # build client with ../../vendor/livewire/livewire/dist/livewire.esm
-FROM node:alpine AS c
+FROM node:lts AS c
 WORKDIR /app
 COPY . .
 COPY --from=s /app/.vendor /app/vendor
 RUN npm i && npm run build && \
     mv public/ .public/
 
-FROM php:8.2-apache AS p
-RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis pdo_mysql opcache
-
-FROM p AS a
+FROM s AS a
 WORKDIR /var/www
 RUN sed -ri -e 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/*.conf && \
     sed -ri -e 's!/var/www/!/var/www/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf && \
