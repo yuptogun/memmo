@@ -1,13 +1,16 @@
 <div class="flex flex-col sm:flex-row w-full justify-between gap-4 items-center">
-  <div class="flex-1 w-full sm:w-auto">
-    <form method="GET" wire:submit="$dispatch('search-changed')">
-      <input type="text" placeholder="type & enter to search" name="search"
+  <div class="flex-1 w-full sm:w-auto sm:shrink-0">
+    <form method="GET" wire:submit="$dispatch('search-changed')"
+      class="flex gap-2">
+      <input type="text" placeholder="type & enter" name="search"
         wire:model="search"
         wire:loading.attr="disabled"
         class="text-sm form-input rounded border border-gray-200 shadow-inner bg-paper-50 focus:ring-paper-600 focus:border-paper-600 focus:bg-white w-full sm:w-auto" />
+      <button type="submit"
+        class="rounded px-3 text-white bg-binder-600 hover:bg-binder-700">search</button>
     </form>
   </div>
-  <div class="flex-1 w-full sm:flex-auto sm:w-auto">
+  <div class="flex-1 w-full sm:flex-auto sm:w-auto sm:grow">
     <div class="flex justify-between gap-2 items-center">
       <div class="inline-block ms-2 sm:ms-0">
         <div wire:loading.remove>
