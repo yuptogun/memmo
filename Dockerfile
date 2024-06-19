@@ -2,8 +2,8 @@
 FROM php:8.2-apache AS s
 WORKDIR /app
 RUN curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s redis pdo_mysql zip opcache
-COPY . .
 COPY --from=composer /usr/bin/composer /usr/bin/composer
+COPY . .
 RUN composer install --prefer-dist --no-dev --no-scripts && \
     composer dump-autoload --no-scripts && \
     mv vendor/ .vendor/
