@@ -2,7 +2,7 @@
     "name": "yuptogun/memmo",
     "type": "project",
     "description": "y u no memo",
-    "keywords": ["laravel", "application", "memo", "produtivity"],
+    "keywords": ["laravel", "application", "memo", "productivity"],
     "license": "MIT",
     "require": {
         "php": "^8.1",
