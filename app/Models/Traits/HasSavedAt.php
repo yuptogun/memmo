@@ -3,15 +3,17 @@
 namespace App\Models\Traits;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property-read Carbon saved_at
- * @property-read string saved_around
+ * @property-read Carbon $saved_at
+ * @property-read string $saved_around
  */
 trait HasSavedAt
 {
     public function getSavedAtAttribute(): Carbon
     {
+        /** @var Model $this */
         return $this->updated_at ?? $this->created_at;
     }
 
@@ -20,7 +22,7 @@ trait HasSavedAt
         /** @var Carbon $savedAt */
         $savedAt = $this->saved_at;
 
-        return $savedAt->isSameYear()
+        return $savedAt->isSameYear($savedAt)
             ? $savedAt->diffForHumans()
             : $savedAt->format('n/j/Y');
     }

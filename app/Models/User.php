@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Memmo::class);
     }
+
+    protected static function booted(): void
+    {
+        static::deleting(fn(User $user) => $user->memmos()->forceDelete());
+    }
 }
